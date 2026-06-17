@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "dashboards": {
+      "dashboards": "Tableaux de bord",
+      "home": "Accueil",
+      "formation": "Formation"
+    },
+    "settings": {
+      "settings": "Paramètres",
+      "general": "Général",
+      "appearance": "Apparence"
+    }
+  }
+}

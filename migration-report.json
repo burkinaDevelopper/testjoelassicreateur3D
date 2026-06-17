@@ -1,0 +1,296 @@
+{
+  "timestamp": "2026-01-05T17:24:51.026Z",
+  "summary": {
+    "totalFiles": 244,
+    "needsMigration": 42,
+    "needsClientDirective": 79
+  },
+  "files": [
+    {
+      "path": "src\\app\\layouts\\AppLayout.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Header\\index.tsx",
+      "issues": [
+        "svgImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Profile.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Sidebar\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Sidebar\\MainPanel\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage",
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Sidebar\\MainPanel\\Menu\\index.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Sidebar\\MainPanel\\Menu\\item.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Sidebar\\PrimePanel\\Menu\\CollapsibleItem\\MenuItem.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\MainLayout\\Sidebar\\PrimePanel\\Menu\\MenuItem.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Root.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\Header\\index.tsx",
+      "issues": [
+        "svgImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\Profile.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\Sidebar\\Header.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage",
+        "svgImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\Sidebar\\Menu\\Group\\CollapsibleItem\\MenuItem.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\Sidebar\\Menu\\Group\\MenuItem.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\layouts\\Sideblock\\Sidebar\\Menu\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\navigation\\icons.ts",
+      "issues": [
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\Auth\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\errors\\401.tsx",
+      "issues": [
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\errors\\404.tsx",
+      "issues": [
+        "reactRouterImports",
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\errors\\429.tsx",
+      "issues": [
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\errors\\500.tsx",
+      "issues": [
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\errors\\RootErrorBoundary.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\settings\\Layout.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\pages\\settings\\Sidebar\\SidebarPanel\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\app\\router\\ghost.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\app\\router\\protected.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\app\\router\\public.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\app\\router\\router.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\components\\shared\\Breadcrumbs.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\DocsNavigation.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\Notifications.tsx",
+      "issues": [
+        "reactRouterImports",
+        "svgImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\Progress.tsx",
+      "issues": [
+        "reactRouterImports"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\RightSidebar\\index.tsx",
+      "issues": [
+        "svgImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\Search.tsx",
+      "issues": [
+        "reactRouterImports",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\SplashScreen.tsx",
+      "issues": [
+        "svgImports"
+      ]
+    },
+    {
+      "path": "src\\components\\template\\Toc\\index.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage",
+        "needsClientDirective"
+      ]
+    },
+    {
+      "path": "src\\middleware\\AuthGuard.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\middleware\\GhostGuard.tsx",
+      "issues": [
+        "reactRouterImports",
+        "reactRouterUsage"
+      ]
+    },
+    {
+      "path": "src\\utils\\isRouteActive.ts",
+      "issues": [
+        "reactRouterImports"
+      ]
+    }
+  ]
+}
