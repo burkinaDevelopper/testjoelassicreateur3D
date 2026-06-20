@@ -10,7 +10,7 @@ import { useBreakpointsContext } from "@/app/contexts/breakpoint/context";
 import { useSidebarContext } from "@/app/contexts/sidebar/context";
 import { useThemeContext } from "@/app/contexts/theme/context";
 import { useDidUpdate } from "@/hooks";
-import { House } from 'lucide-react';
+import { House,BookOpenCheck } from 'lucide-react';
 import Image from "next/image";
 
 export function Sidebar({learner}: any) {
@@ -71,6 +71,15 @@ export function Sidebar({learner}: any) {
             }}
           >
             <House className="inline-block mr-2" />Tableau de bord
+          </Link>
+          <Link
+            href="/mon-espace/cours"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 dark:text-dark-100 dark:hover:bg-dark-800"
+            onClick={() => {
+              if (lgAndDown) close();
+            }}
+          >
+            <BookOpenCheck className="inline-block mr-2" />Mes cours
           </Link>
         </nav>
       </div>

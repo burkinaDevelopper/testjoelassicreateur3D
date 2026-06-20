@@ -19,7 +19,7 @@ export default function page() {
   useEffect(() => {
     void getChapters();
   }, [getChapters]);
-  console.log("chapters", chapters);
+  
 
   return (
     <div className="transition-content w-full px-(--margin-x) pt-0 lg:pt-0">

@@ -24,9 +24,12 @@ import { Row, Table } from "@tanstack/react-table";
 import UpdateModal from "./UpdateModal";
 import { useDisclosure } from "@/hooks";
 import { DeleteModal ,ConfirmMessages} from "./DeleteModal";
-import { useStoreChapters } from "../../../stores/chapters";
+
 import axios from "axios";
 import Link from "next/link";
+import { useStoreChapters } from "../../../../../stores/chapters";
+import { useStoreUsers } from "../../../../../stores/users";
+import { useToast } from "../../../../../hooks/useToast";
 
 // ----------------------------------------------------------------------
 
@@ -52,11 +55,15 @@ export function RowActions({
   const [deleteSuccess, setDeleteSuccess] = useState(false);
   const [deleteError, setDeleteError] = useState(false);
   const [isOpen, { toggle, open, close }] = useDisclosure(false);
-  const getChapters = useStoreChapters((s) => s.getChapters);
+  const getUsersInChapters = useStoreUsers((s) => s.getUsersInChapters);
+  const  currentSlug = useStoreChapters((s) => s. currentSlug);
+  const {showSuccess, showError, showInfo, showWarning, showPromise} = useToast();
 
   const closeModal = () => {
     setDeleteModalOpen(false);
   };
+
+  console.log(currentSlug);
 
   const openModal = () => {
     setDeleteModalOpen(true);
@@ -69,7 +76,7 @@ export function RowActions({
 
   const handleDeleteRows = useCallback(() => {
     setConfirmDeleteLoading(true);
-    onSubmit(row.original?.slug);
+    onSubmit();
     setTimeout(() => {
       table.options?.meta?.deleteRow?.(row);
       setDeleteSuccess(true);
@@ -80,12 +87,13 @@ export function RowActions({
 
   const state = deleteError ? "error" : deleteSuccess ? "success" : "pending";
 
-   const onSubmit = async (slug:string) => 
+   const onSubmit = async () => 
           {
-              await axios.delete(`/api/chapters/delete/${slug}`)
+              await axios.delete(`/api/users/delete-user-in-chapter/${row?.original?.pivot?.user_id}/${row?.original?.pivot?.chapter_id}`)
               .then(function (response) {
                   // Vider le formulaire après succès
-                  getChapters();
+                  if(currentSlug)  getUsersInChapters(currentSlug);
+                  showSuccess(response?.data?.message);
               })
               .catch(function (error) {
                   if (error.status==400) {
@@ -121,51 +129,7 @@ export function RowActions({
               }}
               className="dark:border-dark-500 dark:bg-dark-750 absolute z-100 min-w-[10rem] rounded-lg border border-gray-300 bg-white py-1 shadow-lg shadow-gray-200/50 outline-hidden focus-visible:outline-hidden dark:shadow-none"
             >
-              <MenuItem>
-                {({ focus }) => (
-                  <button
-                    className={clsx(
-                      "flex h-9 w-full items-center space-x-3 px-3 tracking-wide outline-hidden transition-colors",
-                      focus &&
-                        "dark:bg-dark-600 dark:text-dark-100 bg-gray-100 text-gray-800",
-                    )}
-                  >
-                    <UserIcon className="size-4.5 stroke-1" />
-                    <span>
-                      <Link href={`/dashboards/formation/apprenant/${row.original?.slug}`}>Apprenant</Link></span>
-                  </button>
-                )}
-              </MenuItem>
-              <MenuItem>
-                {({ focus }) => (
-                  <button
-                    className={clsx(
-                      "flex h-9 w-full items-center space-x-3 px-3 tracking-wide outline-hidden transition-colors",
-                      focus &&
-                        "dark:bg-dark-600 dark:text-dark-100 bg-gray-100 text-gray-800",
-                    )}
-                  >
-                    <EyeIcon className="size-4.5 stroke-1" />
-                    <span>
-                      <Link href={`/dashboards/formation/${row.original?.slug}`}>Voir</Link></span>
-                  </button>
-                )}
-              </MenuItem>
-              
-              <MenuItem>
-                {({ focus }) => (
-                  <button
-                    onClick={openModalUpdate}
-                    className={clsx(
-                      "this:error  dark:text-this-light flex h-9 w-full items-center space-x-3 px-3 tracking-wide outline-hidden transition-colors",
-                      focus && " dark:bg-this-light/10",
-                    )}
-                  >
-                    <PencilIcon className="size-4.5 stroke-1" />
-                    <span>Modifier</span>
-                  </button>
-                )}
-              </MenuItem>
+             
               <MenuItem>
                 {({ focus }) => (
                   <button
@@ -193,12 +157,7 @@ export function RowActions({
         confirmLoading={confirmDeleteLoading}
         state={state}
       />
-      <UpdateModal 
-        isOpen={isOpen}
-        item={row.original}
-        open={open}
-        close={close}
-      />
+
     </>
   );
 }

@@ -1,26 +1,33 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useRole } from "./hooks/useRole";
+import AnnouncementBar from "./components/home/AnnouncementBar";
+import Navbar from "./components/home/Navbar";
+import Hero from "./components/home/Hero";
+import FeaturedCollection from "./components/home/FeaturedCollection";
+import BestSellers from "./components/home/BestSellers";
+import LearnByTool from "./components/home/LearnByTool";
+import LearnByLevel from "./components/home/LearnByLevel";
+import SocialProof from "./components/home/SocialProof";
+import StudentReviews from "./components/home/StudentReviews";
+import FeaturedCTAs from "./components/home/FeaturedCTAs";
+import CourseFeatures from "./components/home/CourseFeatures";
+import Footer from "./components/home/Footer";
 
 export default function HomePage() {
-  const router = useRouter();
-  const { currentUser, isApprenant, status } = useRole();
-
-  useEffect(() => {
-    // Attendre que NextAuth ait résolu la session.
-    if (status === "loading") return;
-
-    // Si non authentifié, on envoie vers la page de login.
-    if (!currentUser) {
-      router.replace("/login");
-      return;
-    }
-
-    // Page racine : redirige vers l'espace selon le rôle.
-    router.replace(isApprenant ? "/mon-espace" : "/dashboards/home");
-  }, [router, status, currentUser, isApprenant]);
-
-  return null;
+  return (
+    <div className="min-h-screen bg-[#0E0E0E]">
+      <AnnouncementBar />
+      <Navbar />
+      <main>
+        <Hero />
+        <FeaturedCollection />
+        <BestSellers />
+        <LearnByTool />
+        <LearnByLevel />
+        <SocialProof />
+        <StudentReviews />
+        <FeaturedCTAs />
+        <CourseFeatures />
+      </main>
+      <Footer />
+    </div>
+  );
 }

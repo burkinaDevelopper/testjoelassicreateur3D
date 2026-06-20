@@ -12,10 +12,12 @@ import {
 import clsx from "clsx";
 import merge from "lodash/merge";
 import { ElementType, useRef } from "react";
+import axios from 'axios';
 
 // Local Imports
 import { Button, GhostSpinner } from "@/components/ui";
-import { AnimatedTick } from "./AnimatedTick";
+import { AnimatedTick } from "@/components/shared/AnimatedTick";
+
 
 // ----------------------------------------------------------------------
 
@@ -51,29 +53,29 @@ const defaultMessages: Messages = {
   pending: {
     Icon: ExclamationTriangleIcon,
     iconClassName: "text-warning",
-    title: "Are you sure?",
+    title: "Etes-vous sûr?",
     description:
-      "Êtes-vous sûr de vouloir supprimer cet utilisateur ? Une fois supprimé, il ne pourra pas être restauré.",
-    actionText: "Delete",
+      "Êtes-vous sûr de vouloir supprimer cet enregistrement? Une fois supprimé, il ne peut pas être restauré.",
+    actionText: "Supprimer",
   },
   success: {
     Icon: AnimatedTick,
     iconClassName: "text-success",
-    title: "Record Deleted",
-    description: "You have successfully deleted the record from the database.",
-    actionText: "Done",
+    title: "Enregistrement supprimé",
+    description: "Vous avez supprimé avec succès l'enregistrement de la base de données.",
+    actionText: "Terminé",
   },
   error: {
     Icon: XCircleIcon,
-    title: "Opps... Something failed.",
+    title: "Oups... Quelque chose a mal tourné.",
     description:
-      "Ensure internet is on and retry. Contact support if issue remains.",
-    actionText: "Retry",
+      "Assurez-vous que l'internet est activé et réessayez. Si le problème persiste, contactez le support.",
+    actionText: "Réessayer",
     iconClassName: "text-error",
   },
 };
 
-export function ConfirmModal({
+export function DeleteModal({
   show,
   onClose,
   onOk,
@@ -83,15 +85,19 @@ export function ConfirmModal({
   messages,
 }: ConfirmProps & { show: boolean; className?: string }) {
   const focusRef = useRef<HTMLButtonElement>(null);
+    
 
   const dialogProps = confirmLoading
     ? {
-        onClose: () => {},
+        onClose: () => {console.log("close")},
         static: true,
       }
     : {
         onClose,
       };
+
+      
+   
 
   return (
     <Transition
@@ -184,7 +190,7 @@ function Confirm({
               variant="outlined"
               className="h-9 min-w-[7rem]"
             >
-              Cancel
+              Annuler
             </Button>
 
             {state === "pending" && (

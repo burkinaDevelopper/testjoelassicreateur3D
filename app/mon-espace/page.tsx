@@ -9,7 +9,7 @@ function page() {
  
   console.log("currentUser", session);
   return (
-    <div>page mon espace</div>
+    <div>Bienvenue {currentUser?.firstname} {currentUser?.lastname}</div>
   )
 }
 

@@ -77,7 +77,6 @@ function ResetPassword() {
         )
         .then(async function (response) {
           if (response.status==200) {
-          
             showSuccess("Réinitialisation du mot de passe réussie !");
             router.replace("/login");
             reset();
@@ -113,8 +112,6 @@ function ResetPassword() {
         <Card className="mt-5 rounded-lg p-5 lg:p-7">
           <form onSubmit={handleSubmit(onSubmit)} autoComplete="on">
             <div className="space-y-4">
-              
-             
               <Input
                 placeholder="Email"
                 prefix={
