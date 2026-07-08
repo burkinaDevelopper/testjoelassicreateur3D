@@ -12,15 +12,18 @@ import { type Resolver, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Textarea, Button, Input, Select, Switch } from "@/components/ui";
-import { useRequired } from "../../../../../hooks/useRequired";
-import { Preview } from "../../../../../components/Preview";
-import { ColorPicker } from "../../../../../components/ColorPicker";
+
+
+
 import axios from 'axios';
 
-import { useStoreChapters } from "../../../../../stores/chapters";
+
 import { DeltaStatic, TextEditor, Delta } from "@/components/shared/form/TextEditor";
 import type { Item } from "./typeData";
-import { useToast } from "../../../../../hooks/useToast";
+import { useToast } from "../../../hooks/useToast";
+import { useRequired } from "../../../hooks/useRequired";
+import { useStoreChapters } from "../../../stores/chapters";
+
 
 
 const schema = yup.object({
