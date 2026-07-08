@@ -9,16 +9,20 @@ interface ItemState {
   chapter: any
   loadingChapter: boolean
 
-  chapterUsers: any
+  chapterUser: any
+  userChapter: any
   loadingChapterUser: boolean
 
   currentSlug: string | null
 
   getChapters: () => Promise<void>
   getChapter: (slug: string) => Promise<void>
+  getUserChapter: (slug: string) => Promise<void>
   getChaptersUser: (userId: string) => Promise<void>
 
   setCurrentSlug: (slug:string) => void
+
+  reset: () => void
 }
 
 export const useStoreChapters = create<ItemState>((set, get) => ({
@@ -28,12 +32,13 @@ export const useStoreChapters = create<ItemState>((set, get) => ({
   loadingChapter: false,
   chapter: null,
 
-  chapterUsers: null,
+  chapterUser: null,
+  userChapter: null,
   loadingChapterUser: false,
 
   currentSlug: null,
 
-  
+  reset: () => set({ chapters: [], chapter: null, chapterUser: null, userChapter: null, loadingChapters: false, loadingChapter: false, loadingChapterUser: false, currentSlug: null }),
 
    
   setCurrentSlug: (slug:string) => set({ currentSlug: slug }),
@@ -65,15 +70,24 @@ export const useStoreChapters = create<ItemState>((set, get) => ({
     }
   },
   async getChaptersUser(userId: string) {
-    set({ loadingChapterUser: true , chapterUsers: null});
+    set({ loadingChapterUser: true , chapterUser: null});
     try {
       const response = await axios.get(`/api/chapters/user/${userId}`);
       console.log(response);
-      set({ chapterUsers: response?.data?.user.chapters || null });
+      set({ chapterUser: response?.data || null });
     } catch (error) {
       console.log(error);
     } finally {
       set({ loadingChapterUser: false });
+    }
+  },
+  async getUserChapter(slug: string) {
+    set({  userChapter: null});
+    try {
+      const response = await axios.get(`/api/chapters/chapter/${slug}`);
+      set({ userChapter: response?.data || null });
+    } catch (error) {
+      console.log(error);
     }
   },
 }))

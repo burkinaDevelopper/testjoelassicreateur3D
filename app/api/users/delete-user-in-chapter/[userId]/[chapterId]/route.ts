@@ -18,7 +18,7 @@ export async function DELETE(request: NextRequest, context: { params: Promise<{ 
     const accessToken = (token as any).accessToken as string;
 
     const response = await axios.delete(
-      `${backendUrl}/api/delete-user-in-chpater/${userId}/${chapterId}`,
+      `${backendUrl}/api/delete-user-in-chapter/${userId}/${chapterId}`,
         {
         headers: {
           'Authorization': `Bearer ${accessToken}`,

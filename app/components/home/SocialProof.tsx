@@ -8,13 +8,13 @@ export default function SocialProof() {
           {/* Left: text content */}
           <div className="flex flex-col justify-center px-8 lg:px-16 py-14 lg:py-16">
             <h2 className="text-white text-3xl lg:text-4xl font-black leading-tight mb-5">
-              Ellos Ya Lo Comprobaron,{" "}
+              Ils L'Ont Déjà Prouvé,{" "}
               <br />
-              <span className="text-[#F0B90B]">Tú También Puedes</span>
+              <span className="text-[#F0B90B]">Toi Aussi Tu Peux</span>
             </h2>
             <p className="text-zinc-400 text-sm leading-relaxed mb-6 max-w-md">
-              Nuestros cursos son los más valorados porque combinan práctica,
-              claridad y resultados reales.
+              Nos cours sont les mieux notés car ils allient pratique,
+              clarté et résultats concrets.
             </p>
 
             {/* Rating */}
@@ -27,7 +27,7 @@ export default function SocialProof() {
                 ))}
               </div>
               <span className="text-zinc-400 text-sm">
-                <span className="text-white font-bold">4.9</span> / 5.0 de más de 1,000 estudiantes
+                <span className="text-white font-bold">4.9</span> / 5.0 pour plus de 1 000 étudiants
               </span>
             </div>
 
@@ -35,7 +35,7 @@ export default function SocialProof() {
               href="/cursos"
               className="inline-block self-start bg-[#F0B90B] text-black font-black text-sm tracking-[0.25em] uppercase px-10 py-3.5 hover:bg-yellow-300 transition-colors"
             >
-              ÚNIRME A UN CURSO
+              REJOINDRE UN COURS
             </Link>
           </div>
 
@@ -45,7 +45,7 @@ export default function SocialProof() {
               <div className="relative">
                 <img
                   src="/images/courses/course-8.jpg"
-                  alt="Render arquitectónico"
+                  alt="Rendu architectural"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -53,21 +53,21 @@ export default function SocialProof() {
                 <div className="relative overflow-hidden">
                   <img
                     src="/images/courses/course-9.jpg"
-                    alt="Render interior"
+                    alt="Rendu intérieur"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="relative overflow-hidden">
                   <img
                     src="/images/courses/course-10.jpg"
-                    alt="Render exterior"
+                    alt="Rendu extérieur"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
             {/* Play button overlay */}
-            <button className="absolute inset-0 flex items-center justify-center group" aria-label="Ver video">
+            <button className="absolute inset-0 flex items-center justify-center group" aria-label="Voir la vidéo">
               <div className="w-16 h-16 rounded-full bg-black/60 border-2 border-white flex items-center justify-center group-hover:bg-[#F0B90B] group-hover:border-[#F0B90B] transition-colors">
                 <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />

@@ -1,7 +1,8 @@
 "use client"
-import React, { use, useEffect, useMemo, useState } from 'react'
+import React, { use, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import axios from 'axios'
 import {
   Play, Pause, SkipBack, SkipForward, Maximize2,
   ChevronDown, ChevronUp, ChevronRight,
@@ -142,9 +143,14 @@ export default function FormationSuiviePage({ params }: { params: Promise<{ slug
   const { currentUser, isApprenant } = useRole()
   const getChapter = useStoreChapters((s) => s.getChapter);
   const chapter = useStoreChapters((s) => s.chapter);
+  const reset = useStoreChapters((s) => s.reset);
+  const resetPlayer = usePlayerStore((s) => s.reset)
   const currentLessonId = usePlayerStore((s) => s.currentLessonId)
   const setCurrentLesson = usePlayerStore((s) => s.setCurrentLesson)
+  const updateLessonStatus = usePlayerStore((s) => s.updateLessonStatus)
+  const updateModuleStatus = usePlayerStore((s) => s.updateModuleStatus)
   const [activeTab, setActiveTab] = useState<'apercu' | 'prerequis' | 'ressources' | 'targets'>('apercu')
+  const [finishLoading, setFinishLoading] = useState(false)
   const [expandedModules, setExpandedModules] = useState<number[]>([3])
   const [comment, setComment] = useState('')
 
@@ -153,6 +159,11 @@ export default function FormationSuiviePage({ params }: { params: Promise<{ slug
     { label: chapter?.title, href: `/dashboards/formation/${slug}` },
   ],[chapter])
 
+
+  useLayoutEffect(() => {
+    resetPlayer();
+    reset();
+  }, [slug])
 
   useEffect(() => {
     if (slug) {
@@ -194,6 +205,19 @@ export default function FormationSuiviePage({ params }: { params: Promise<{ slug
     ? allLessons.length > 0
     : allLessons.findIndex((l) => l.id === currentLessonId) < allLessons.length - 1
 
+  // Trouve le module et la leçon courants + détecte si c'est la dernière leçon du module
+  const currentModData = useMemo(() => {
+    if (!chapter?.modules || !currentLessonId) return null
+    for (const mod of chapter.modules) {
+      const idx = (mod.lessons ?? []).findIndex((l: any) => l.id === currentLessonId)
+      if (idx >= 0) {
+        return { modId: mod.id, isLastLesson: idx === mod.lessons.length - 1 }
+      }
+    }
+    return null
+  }, [chapter, currentLessonId])
+
+ 
   void slug
 
   return (
@@ -233,6 +257,8 @@ export default function FormationSuiviePage({ params }: { params: Promise<{ slug
               <div className="sticky top-0 z-20 -mx-4 px-4 py-2 bg-white dark:bg-dark-800 md:-mx-6 md:px-6">
                 <VideoPlayer  />
               </div>
+
+             
 
               {/* Instructor + Next module */}
               <div className="flex items-center justify-between gap-4">

@@ -17,48 +17,48 @@ const REVIEWS: Review[] = [
     name: "María García",
     avatar: "/images/avatar/avatar-2.jpg",
     stars: 5,
-    text: "Excelente curso, aprendí muchísimo sobre Sketchup y Vray. Los renders que logré hacer son increíbles. Totalmente recomendado.",
-    course: "Sketchup + Vray 7 Básico",
+    text: "Excellente formation, j'ai énormément appris sur Sketchup et Vray. Les rendus que j'ai réussi à réaliser sont incroyables. Totalement recommandé.",
+    course: "Sketchup + Vray 7 Débutant",
   },
   {
     id: 2,
     name: "Carlos Mendoza",
     avatar: "/images/avatar/avatar-3.jpg",
     stars: 5,
-    text: "El instructor explica de forma muy clara y práctica. Empecé desde cero y ahora puedo hacer renders profesionales.",
-    course: "Paquete Básico a Intermedio",
+    text: "Le formateur explique de façon très claire et pratique. J'ai commencé de zéro et maintenant je peux réaliser des rendus professionnels.",
+    course: "Pack Débutant à Intermédiaire",
   },
   {
     id: 3,
     name: "Ana López",
     avatar: "/images/avatar/avatar-4.jpg",
     stars: 5,
-    text: "La calidad del contenido es increíble. Las asesorías personalizadas hacen la diferencia. Vale cada peso.",
-    course: "D5Render 2025 Básico",
+    text: "La qualité du contenu est incroyable. Les accompagnements personnalisés font toute la différence. Ça vaut chaque centime.",
+    course: "D5Render 2025 Débutant",
   },
   {
     id: 4,
     name: "Roberto Silva",
     avatar: "/images/avatar/avatar-5.jpg",
     stars: 5,
-    text: "Después de tomar este curso conseguí mi primer trabajo en un despacho de arquitectura. Gracias VisualBricks.",
-    course: "Paquete Intermedio a Avanzado",
+    text: "Après avoir suivi cette formation, j'ai décroché mon premier emploi dans un cabinet d'architecture. Merci VisualBricks.",
+    course: "Pack Intermédiaire à Avancé",
   },
   {
     id: 5,
     name: "Sofía Ramírez",
     avatar: "/images/avatar/avatar-6.jpg",
     stars: 5,
-    text: "Los proyectos del curso son muy completos y el soporte es excelente. Siempre resuelven mis dudas al momento.",
-    course: "Sketchup + Vray 7 Básico",
+    text: "Les projets de la formation sont très complets et le support est excellent. Ils répondent toujours à mes questions immédiatement.",
+    course: "Sketchup + Vray 7 Débutant",
   },
   {
     id: 6,
     name: "Diego Torres",
     avatar: "/images/avatar/avatar-7.jpg",
     stars: 5,
-    text: "Increíble la evolución que tuve desde el primer módulo. El contenido está perfectamente estructurado para aprender paso a paso.",
-    course: "Paquete Básico a Intermedio",
+    text: "Incroyable l'évolution que j'ai eue dès le premier module. Le contenu est parfaitement structuré pour apprendre étape par étape.",
+    course: "Pack Débutant à Intermédiaire",
   },
 ];
 
@@ -84,8 +84,8 @@ export default function StudentReviews() {
     <section className="bg-[#0E0E0E] py-12 lg:py-16 border-t border-zinc-800">
       <div className="max-w-screen-xl mx-auto px-4">
         <h2 className="text-white text-2xl lg:text-3xl font-black mb-10 text-center">
-          Reseñas de{" "}
-          <span className="text-[#F0B90B]">Estudiantes</span>
+          Avis des{" "}
+          <span className="text-[#F0B90B]">Étudiants</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -122,7 +122,7 @@ export default function StudentReviews() {
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
                 i === page ? "bg-[#F0B90B]" : "bg-zinc-700 hover:bg-zinc-500"
               }`}
-              aria-label={`Página ${i + 1}`}
+              aria-label={`Page ${i + 1}`}
             />
           ))}
         </div>

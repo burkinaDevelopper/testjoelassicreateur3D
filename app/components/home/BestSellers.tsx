@@ -15,29 +15,29 @@ interface Course {
 const BEST_SELLERS: Course[] = [
   {
     id: 1,
-    title: "Paquete Sketchup + Vray 7 2025 Básico a Intermedio",
+    title: "Pack Sketchup + Vray 7 2025 Débutant à Intermédiaire",
     price: 1500,
     originalPrice: 2000,
     image: "/images/courses/course-4.jpg",
     instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "BÁSICO A INTERMEDIO",
+    badge: "DÉBUTANT À INTERMÉDIAIRE",
     stars: 5,
     reviews: 40,
   },
   {
     id: 2,
-    title: "NUEVO Paquete Sketchup + Vray 7 2025 Intermedio a Avanzado",
+    title: "NOUVEAU Pack Sketchup + Vray 7 2025 Intermédiaire à Avancé",
     price: 1400,
     originalPrice: 2000,
     image: "/images/courses/course-5.jpg",
     instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "AVANZADO",
+    badge: "AVANCÉ",
     stars: 5,
     reviews: 40,
   },
   {
     id: 3,
-    title: "Paquete D5Render 2025 Básico",
+    title: "Pack D5Render 2025 Débutant",
     price: 900,
     originalPrice: 1500,
     image: "/images/courses/course-6.jpg",
@@ -47,7 +47,7 @@ const BEST_SELLERS: Course[] = [
   },
   {
     id: 4,
-    title: "NUEVO Paquete Sketchup + Vray 7 2025 Básico",
+    title: "NOUVEAU Pack Sketchup + Vray 7 2025 Débutant",
     price: 1100,
     originalPrice: 2000,
     image: "/images/courses/course-7.jpg",
@@ -90,7 +90,7 @@ function BestSellerCard({ course }: { course: Course }) {
         <div className="absolute bottom-2 left-2">
           <img
             src={course.instructorAvatar}
-            alt="Instructor"
+            alt="Formateur"
             className="w-8 h-8 rounded-full border-2 border-[#F0B90B] object-cover"
           />
         </div>
@@ -114,7 +114,7 @@ function BestSellerCard({ course }: { course: Course }) {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          AGREGAR AL CARRITO
+          AJOUTER AU PANIER
         </button>
       </div>
     </div>
@@ -130,8 +130,8 @@ export default function BestSellers() {
             BEST SELLERS
           </p>
           <h2 className="text-zinc-900 text-2xl lg:text-3xl font-black">
-            Nuestros Cursos{" "}
-            <span className="text-[#F0B90B]">Más Vendidos</span>
+            Nos Cours{" "}
+            <span className="text-[#F0B90B]">Les Plus Vendus</span>
           </h2>
         </div>
 
@@ -146,7 +146,7 @@ export default function BestSellers() {
             href="/cursos"
             className="inline-block bg-[#F0B90B] text-black font-black text-sm tracking-[0.25em] uppercase px-12 py-3.5 hover:bg-yellow-300 transition-colors"
           >
-            VER TODO
+            VOIR TOUT
           </Link>
           <Link
             href="/clase-muestra"
@@ -156,7 +156,7 @@ export default function BestSellers() {
               <circle cx="12" cy="12" r="10" strokeWidth={2} />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
             </svg>
-            ¿TIENES DUDAS? ACCEDE A NUESTRA CLASE MUESTRA
+            DES QUESTIONS ? ACCÉDEZ À NOTRE COURS D'ESSAI
           </Link>
         </div>
       </div>

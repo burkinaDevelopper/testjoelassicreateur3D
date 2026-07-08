@@ -58,13 +58,10 @@ export function HRTable({usersInChapters}:any) {
   const { height: theadHeight } = useBoxSize({ ref: theadRef });
   const { width: cardWidth } = useBoxSize({ ref: cardRef });
 
- 
-
-
   const [globalFilter, setGlobalFilter] = useState("");
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  const tableData = useMemo(() => usersInChapters, [usersInChapters]);
+  const tableData = useMemo(() => usersInChapters ?? [], [usersInChapters]);
   
   const table = useReactTable({
     data: tableData,
@@ -151,7 +148,7 @@ export function HRTable({usersInChapters}:any) {
               ))}
             </THead>
             <TBody>
-              {table?.getRowModel().rows.map((row) => {
+              {table?.getRowModel()?.rows.map((row) => {
                 return (
                   <Fragment key={row.id}>
                     <Tr
@@ -195,7 +192,7 @@ export function HRTable({usersInChapters}:any) {
             </TBody>
           </Table>
         </div>
-        {table.getCoreRowModel().rows.length && (
+        {table.getCoreRowModel().rows.length > 0 && (
           <div className="p-4 sm:px-5">
             <PaginationSection table={table} />
           </div>

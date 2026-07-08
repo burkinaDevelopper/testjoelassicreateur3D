@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src="/images/courses/course-1.jpg"
-          alt="Render arquitectónico"
+          alt="Rendu architectural"
           className="w-full h-full object-cover"
         />
         {/* Gradient overlay */}
@@ -20,7 +20,7 @@ export default function Hero() {
           href="/cursos"
           className="inline-block bg-[#F0B90B] text-black font-black text-sm lg:text-base tracking-[0.3em] uppercase px-10 py-4 hover:bg-yellow-300 transition-colors"
         >
-          VER CURSOS
+          VOIR LES COURS
         </Link>
       </div>
     </section>

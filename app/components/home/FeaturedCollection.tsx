@@ -13,29 +13,29 @@ interface Course {
 const FEATURED_COURSES: Course[] = [
   {
     id: 1,
-    title: "NUEVO Exterior Sketchup + Vray 7 2025 Básico",
+    title: "NOUVEAU Extérieur Sketchup + Vray 7 2025 Basique",
     price: 600,
     image: "/images/courses/course-1.jpg",
     instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "NUEVO",
+    badge: "NOUVEAU",
     hasIA: true,
   },
   {
     id: 2,
-    title: "NUEVO Interior Sketchup + Vray 7 2025 Básico",
+    title: "NOUVEAU Intérieur Sketchup + Vray 7 2025 Basique",
     price: 600,
     image: "/images/courses/course-2.jpg",
     instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "NUEVO",
+    badge: "NOUVEAU",
     hasIA: true,
   },
   {
     id: 3,
-    title: "NUEVO Paquete Sketchup + Vray 7 2025 Básico",
+    title: "NOUVEAU Pack Sketchup + Vray 7 2025 Basique",
     price: 1100,
     image: "/images/courses/course-3.jpg",
     instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "NUEVO",
+    badge: "NOUVEAU",
     hasIA: true,
   },
 ];
@@ -65,7 +65,7 @@ function CourseCard({ course }: { course: Course }) {
         <div className="absolute bottom-2 left-2">
           <img
             src={course.instructorAvatar}
-            alt="Instructor"
+            alt="Formateur"
             className="w-9 h-9 rounded-full border-2 border-[#F0B90B] object-cover"
           />
         </div>
@@ -77,7 +77,7 @@ function CourseCard({ course }: { course: Course }) {
           {course.title}
         </h3>
         <p className="text-white font-black text-lg">
-          $ {course.price.toLocaleString("es-MX", { minimumFractionDigits: 2 })}.00
+          $ {course.price.toLocaleString("fr-FR", { minimumFractionDigits: 2 })}.00
         </p>
       </div>
     </div>
@@ -89,7 +89,7 @@ export default function FeaturedCollection() {
     <section className="bg-[#0E0E0E] py-12 lg:py-16">
       <div className="max-w-screen-xl mx-auto px-4">
         <h2 className="text-white text-2xl lg:text-3xl font-black mb-8">
-          Colección destacada
+          Collection en vedette
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -103,7 +103,7 @@ export default function FeaturedCollection() {
             href="/cursos"
             className="inline-block bg-[#F0B90B] text-black font-black text-sm tracking-[0.25em] uppercase px-12 py-3.5 hover:bg-yellow-300 transition-colors"
           >
-            VER TODO
+            VOIR TOUT
           </Link>
         </div>
       </div>

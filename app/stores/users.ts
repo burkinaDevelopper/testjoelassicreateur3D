@@ -23,7 +23,7 @@ export const useStoreUsers = create<ItemState>((set, get) => ({
     set({ loadingUsers: true , users: []});
     try {
       const response = await axios.get('/api/users/index');
-      console.log(response);
+      
       set({ users: response?.data?.users || [] });
     } catch (error) {
       console.log(error);

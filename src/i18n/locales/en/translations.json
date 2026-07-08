@@ -3,7 +3,8 @@
     "dashboards": {
       "dashboards": "Dashboards",
       "home": "Home",
-      "formation": "Formation"
+      "formation": "Formation",
+      "apprenant": "Learner"
     },
     "settings": {
       "settings": "Settings",

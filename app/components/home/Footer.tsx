@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const FOOTER_LINKS = [
-  { label: "Política de privacidad", href: "/privacidad" },
-  { label: "Términos y condiciones", href: "/terminos" },
-  { label: "Preguntas frecuentes", href: "/faq" },
-  { label: "Contacto", href: "/contacto" },
+  { label: "Politique de confidentialité", href: "/privacidad" },
+  { label: "Conditions générales", href: "/terminos" },
+  { label: "Questions fréquentes", href: "/faq" },
+  { label: "Contact", href: "/contacto" },
 ];
 
 function PaymentIcon({ label }: { label: string }) {
@@ -45,10 +45,10 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-zinc-500 text-xs leading-relaxed max-w-sm mb-5">
-              Visual Bricks es una plataforma especializada en cursos online de visualización
-              arquitectónica. Enseñamos a dominar las técnicas y procesos que te llevarán paso a
-              paso desde los fundamentos hasta el{" "}
-              <span className="text-[#F0B90B]">nivel más profesional</span>.
+              Visual Bricks est une plateforme spécialisée dans les cours en ligne de
+              visualisation architecturale. Nous vous enseignons à maîtriser les techniques et
+              processus qui vous mèneront étape par étape des fondamentaux jusqu&apos;au{" "}
+              <span className="text-[#F0B90B]">niveau le plus professionnel</span>.
             </p>
             {/* Social links */}
             <div className="flex items-center gap-3">
@@ -68,7 +68,7 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h4 className="text-white font-bold text-xs tracking-widest uppercase mb-4">Información</h4>
+            <h4 className="text-white font-bold text-xs tracking-widest uppercase mb-4">Informations</h4>
             <ul className="space-y-2.5">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.label}>
@@ -87,9 +87,9 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-zinc-800">
           <p className="text-zinc-600 text-xs text-center sm:text-left">
-            © {new Date().getFullYear()} Visual Bricks. Todos los derechos reservados.
+            © {new Date().getFullYear()} Visual Bricks. Tous droits réservés.
             {" | "}
-            <Link href="/privacidad" className="hover:text-zinc-400 transition-colors">Política de privacidad</Link>
+            <Link href="/privacidad" className="hover:text-zinc-400 transition-colors">Politique de confidentialité</Link>
           </p>
           {/* Payment methods */}
           <div className="flex items-center gap-2">

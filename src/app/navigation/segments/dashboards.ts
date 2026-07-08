@@ -25,5 +25,13 @@ export const dashboards: NavigationTree = {
       transKey: "nav.dashboards.formation",
       icon: "dashboards.formation",
     },
+    {
+      id: "dashboards.apprenant",
+      path: path(ROOT_DASHBOARDS, "/apprenant"),
+      type: "item",
+      title: "Apprenant",
+      transKey: "nav.dashboards.apprenant",
+      icon: "dashboards.apprenant",
+    },
   ],
 };

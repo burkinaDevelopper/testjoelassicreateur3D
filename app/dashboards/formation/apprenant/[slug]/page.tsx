@@ -14,13 +14,13 @@ export default function page({ params }: { params: Promise<{ slug: string }> }) 
     const usersInChapters = useStoreUsers((s) => s.usersInChapters);
     const getUsersInChapters = useStoreUsers((s) => s.getUsersInChapters);
 
-    console.log(usersInChapters);
+    console.log('user',usersInChapters);
 
     useEffect(() => {
         if (slug) {        
           useStoreChapters.getState().getChapter(slug)
           useStoreUsers.getState().getUsersInChapters(slug)
-           setCurrentSlug(slug); 
+          setCurrentSlug(slug); 
         }
     }, [slug])
   return (

@@ -1,5 +1,5 @@
 export default function AnnouncementBar() {
-  const message = "+1,000 estudiantes satisfechos nos respaldan";
+  const message = "+1 000 étudiants satisfaits nous soutiennent";
   const items = Array(10).fill(message);
 
   return (

@@ -63,7 +63,7 @@ export function RowActions({
     setDeleteModalOpen(false);
   };
 
-  console.log(currentSlug);
+
 
   const openModal = () => {
     setDeleteModalOpen(true);
@@ -88,19 +88,19 @@ export function RowActions({
   const state = deleteError ? "error" : deleteSuccess ? "success" : "pending";
 
    const onSubmit = async () => 
-          {
-              await axios.delete(`/api/users/delete-user-in-chapter/${row?.original?.pivot?.user_id}/${row?.original?.pivot?.chapter_id}`)
-              .then(function (response) {
-                  // Vider le formulaire après succès
-                  if(currentSlug)  getUsersInChapters(currentSlug);
-                  showSuccess(response?.data?.message);
-              })
-              .catch(function (error) {
-                  if (error.status==400) {
-                    
-                  }
-              })
-          };
+    {
+      await axios.delete(`/api/users/delete-user-in-chapter/${row?.original?.pivot?.user_id}/${row?.original?.pivot?.chapter_id}`)
+      .then(function (response) {
+          // Vider le formulaire après succès
+          if(currentSlug)  getUsersInChapters(currentSlug);
+          showSuccess(response?.data?.message);
+      })
+      .catch(function (error) {
+          if (error.status==400) {
+            
+          }
+      })
+    };
 
   return (
     <>

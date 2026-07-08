@@ -3,7 +3,8 @@
     "dashboards": {
       "dashboards": "Tableaux de bord",
       "home": "Accueil",
-      "formation": "Formation"
+      "formation": "Formation",
+      "apprenant": "Apprenant"
     },
     "settings": {
       "settings": "Paramètres",

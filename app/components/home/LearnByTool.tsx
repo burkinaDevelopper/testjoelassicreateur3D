@@ -48,8 +48,8 @@ export default function LearnByTool() {
     <section className="bg-[#0E0E0E] py-12 lg:py-16 border-t border-zinc-800">
       <div className="max-w-screen-xl mx-auto px-4">
         <h2 className="text-white text-2xl lg:text-3xl font-black mb-8 text-center">
-          Aprende por{" "}
-          <span className="text-[#F0B90B]">Herramienta</span>
+          Apprends par{" "}
+          <span className="text-[#F0B90B]">Outil</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
@@ -66,7 +66,7 @@ export default function LearnByTool() {
                 href={`/cursos?herramienta=${tool.slug}`}
                 className="text-[#F0B90B] text-xs font-semibold hover:underline flex items-center gap-1"
               >
-                Ver Cursos
+                Voir les cours
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>

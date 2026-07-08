@@ -9,7 +9,8 @@ import { ColorKey, setThisClass } from "@/utils/setThisClass";
 import { Highlight } from "@/components/shared/Highlight";
 import { ensureString } from "@/utils/ensureString";
 import moment from "moment";
-;
+moment.locale('fr');
+
 // ----------------------------------------------------------------------
 
 const statusColors: Record<string, ColorKey> = {
