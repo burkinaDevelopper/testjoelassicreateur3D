@@ -22,6 +22,8 @@ function PaymentIcon({ label }: { label: string }) {
 }
 
 export default function Footer() {
+
+  const appName = process.env.NEXT_PUBLIC_NAME;
   return (
     <footer className="bg-[#0A0A0A] border-t border-zinc-800">
       <div className="max-w-screen-xl mx-auto px-4 py-10">
@@ -31,17 +33,11 @@ export default function Footer() {
             {/* Logo */}
             <div className="flex items-center gap-2 mb-4">
               <div className="flex items-center gap-0.5">
-                {[0, 1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-2.5 h-2.5 bg-[#F0B90B]"
-                    style={{ opacity: 1 - i * 0.15 }}
-                  />
-                ))}
+               
               </div>
               <div className="leading-none">
-                <span className="text-zinc-400 text-[8px] font-light tracking-[0.3em] uppercase block">VISUAL</span>
-                <span className="text-white text-sm font-black tracking-[0.15em] uppercase block">BRICKS</span>
+               {appName}
+               
               </div>
             </div>
             <p className="text-zinc-500 text-xs leading-relaxed max-w-sm mb-5">
