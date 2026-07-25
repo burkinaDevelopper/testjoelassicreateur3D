@@ -23,7 +23,7 @@ const TOOLS = [
   },
   {
     id: 2,
-    name: "DS Render",
+    name: "D5 Render",
     slug: "ds-render",
     icon: (
       <div className="w-10 h-10 rounded-xl bg-[#7C3AED] flex items-center justify-center">
