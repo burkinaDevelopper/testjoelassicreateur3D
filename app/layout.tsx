@@ -3,8 +3,11 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Tailux",
-  description: "Application Next.js avec Tailwind CSS",
+  title: "Joelassicreateur3d",
+  description: "Joelassicreateur3d, plateforme e-learning de formations en création 3D et rendu architectural. Apprenez à votre rythme et découvrez notre boutique de ressources 3D.",
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { useStoreShop } from "../../stores/shop";
 
 const NAV_LINKS = [
   { label: "ACCUEIL", href: "/" },
@@ -23,7 +25,12 @@ const TOP_LINKS = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [cartCount] = useState(0);
+  const cart = useStoreShop((s) => s.cart);
+  const removeFromCart = useStoreShop((s) => s.removeFromCart);
+  const cartCount = cart.length;
+  const cartTotal = cart.reduce((sum, item) => sum + (Number(item.price) ?? 0), 0);
+
+  const appName = process.env.NEXT_PUBLIC_NAME;
 
   const router = useRouter();
 
@@ -56,21 +63,10 @@ export default function Navbar() {
       <nav className="max-w-screen-xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <div className="flex items-center gap-0.5">
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="w-2.5 h-2.5 bg-[#F0B90B]"
-                style={{ opacity: 1 - i * 0.15 }}
-              />
-            ))}
-          </div>
+          
           <div className="leading-none">
             <span className="text-zinc-400 text-[8px] font-light tracking-[0.3em] uppercase block">
-              VISUAL
-            </span>
-            <span className="text-white text-sm font-black tracking-[0.15em] uppercase block">
-              BRICKS
+              { appName }
             </span>
           </div>
         </Link>
@@ -92,32 +88,82 @@ export default function Navbar() {
         {/* Right side actions */}
         <div className="flex items-center gap-3">
           {/* Search */}
-          <button className="text-zinc-400 hover:text-white p-1.5 transition-colors" aria-label="Rechercher">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </button>
+         
 
           {/* Cart */}
-          <button className="relative text-zinc-400 hover:text-white p-1.5 transition-colors" aria-label="Panier">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            {cartCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 bg-[#F0B90B] text-black text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
-          </button>
+          <Popover className="relative">
+            <PopoverButton className="relative text-zinc-400 hover:text-white p-1.5 transition-colors outline-none" aria-label="Panier">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              {cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 bg-[#F0B90B] text-black text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </PopoverButton>
+            <PopoverPanel
+              anchor="bottom end"
+              className="z-50 mt-2 w-80 rounded-lg border border-zinc-800 bg-[#161616] p-4 shadow-xl"
+            >
+              {cart.length === 0 ? (
+                <p className="text-zinc-400 text-sm text-center py-4">
+                  Votre panier est vide
+                </p>
+              ) : (
+                <>
+                  <ul className="space-y-3 max-h-80 overflow-y-auto">
+                    {cart.map((item) => (
+                      <li key={item.id} className="flex items-center gap-3">
+                        {item.url && (
+                          <img
+                            src={item.url}
+                            alt={item.title}
+                            className="w-12 h-12 rounded object-cover shrink-0"
+                          />
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white text-xs font-semibold line-clamp-2">
+                            {item.title}
+                          </p>
+                          <p className="text-[#F0B90B] text-xs font-bold mt-0.5">
+                            € {item.price.toLocaleString("fr-FR", { minimumFractionDigits: 2 })}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          aria-label="Retirer du panier"
+                          className="text-zinc-500 hover:text-white p-1 shrink-0"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between">
+                    <span className="text-zinc-400 text-xs uppercase tracking-wide">Total</span>
+                    <span className="text-white font-black">
+                      € {cartTotal}
+                    </span>
+                  </div>
+                  <Link
+                    href="/panier"
+                    className="mt-3 block text-center bg-[#F0B90B] text-black font-bold text-xs uppercase tracking-wider py-2.5 rounded hover:bg-yellow-300 transition-colors"
+                  >
+                    Voir le panier
+                  </Link>
+                </>
+              )}
+            </PopoverPanel>
+          </Popover>
 
           {/* Currency / Member */}
           <button className="hidden lg:flex items-center gap-1 text-zinc-400 hover:text-white text-[11px] font-medium whitespace-nowrap transition-colors">
-            MEMBRE
+            
             <span className="text-zinc-600">|</span>
-            MXN $
-            <svg className="w-3 h-3 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+             €
           </button>
 
           {/* User */}
@@ -127,13 +173,7 @@ export default function Navbar() {
             </svg>
           </button>
 
-          {/* Language */}
-          <button className="hidden lg:flex items-center gap-1 text-zinc-400 hover:text-white text-[11px] font-medium transition-colors">
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            FRANÇAIS
-          </button>
+         
 
           {/* Mobile hamburger */}
           <button
@@ -172,8 +212,7 @@ export default function Navbar() {
           </ul>
           <div className="px-4 pb-4 pt-2 flex flex-col gap-3">
             <div className="flex items-center gap-4 text-xs text-zinc-400">
-              <span>MEMBRE | MXN $</span>
-              <span>FRANÇAIS</span>
+              <span>€</span>
             </div>
           </div>
         </div>

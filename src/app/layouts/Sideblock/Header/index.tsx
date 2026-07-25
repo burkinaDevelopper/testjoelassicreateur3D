@@ -11,7 +11,7 @@ import { Button } from "@/components/ui";
 import { SidebarToggleBtn } from "@/components/shared/SidebarToggleBtn";
 import { useBreakpointsContext } from "@/app/contexts/breakpoint/context";
 import { Profile } from "../Profile";
-import { Search } from "@/components/template/Search";
+// import { Search } from "@/components/template/Search";
 import { useThemeContext } from "@/app/contexts/theme/context";
 
 // ----------------------------------------------------------------------
@@ -33,52 +33,11 @@ export function Header() {
 
       <div className="flex items-center gap-2 sm:flex-1">
         <div className="flex-1">
-          <Search
-            renderButton={(open: () => void) => (
-              <>
-                {smAndUp && (
-                  <button
-                    onClick={open}
-                    className="flex items-center gap-4 outline-hidden max-sm:hidden"
-                  >
-                    <div className="flex items-center gap-2">
-                      <MagnifyingGlassIcon className="size-5" />
-                      <span>Search here...</span>
-                    </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="20"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill="none"
-                        stroke="currentColor"
-                        d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"
-                        opacity="0.4"
-                      ></path>
-                      <path
-                        fill="currentColor"
-                        d="M11.8 6L8 15.1h-.9L10.8 6h1z"
-                      ></path>
-                    </svg>
-                  </button>
-                )}
-                <Button
-                  onClick={open}
-                  variant="flat"
-                  isIcon
-                  className="relative size-9 rounded-full sm:hidden"
-                >
-                  <SearchIcon className="size-6 text-gray-900 dark:text-dark-100" />
-                </Button>
-              </>
-            )}
-          />
+         
         </div>
-        <Notifications />
-        <RightSidebar />
-        <LanguageSelector />
+        {/* <Notifications /> */}
+        {/* <RightSidebar /> */}
+        {/* <LanguageSelector /> */}
         <Profile />
       </div>
     </header>

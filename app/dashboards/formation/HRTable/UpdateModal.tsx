@@ -26,6 +26,8 @@ const schema = yup.object({
   title: yup.string().required(),
   image: yup.mixed<File | string>().required(),
   description: yup.mixed<DeltaStatic>().required('La description est requis'),
+  reduction: yup.string().required('Le reduction est requis'),
+  level: yup.string().required('Le niveau est requis'),
   price: yup.string().required('Le prix est requis'),
 });
 type ValidationSchema = yup.InferType<typeof schema>;
@@ -62,6 +64,8 @@ export default function UpdateModal({item,isOpen,open,close}:
     const {showSuccess, showError, showInfo, showWarning, showPromise} = useToast();
     const [count, setCount] = useState("0");
     const getChapters = useStoreChapters((s) => s.getChapters);
+
+    console.log(item);
     
     const saveRef = useRef(null);
 
@@ -79,6 +83,8 @@ export default function UpdateModal({item,isOpen,open,close}:
             image: item?.url ?? null,
             description: parseDelta(item?.description),
             price: item?.price ?? "",
+            reduction: item?.reduction ?? "",
+            level: item?.level ?? "",
         },
     });
 
@@ -88,6 +94,8 @@ export default function UpdateModal({item,isOpen,open,close}:
             title: item?.title ?? "",
             description: parseDelta(item?.description),
             price: item?.price ?? "",
+            reduction: item?.reduction ?? "",
+            level: item?.level ?? "",
             image: item?.url ?? null,
         });
     }, [isOpen, item, reset]);
@@ -111,6 +119,8 @@ export default function UpdateModal({item,isOpen,open,close}:
             // Champs requis
             formData.append('title', data.title);
             formData.append('price', data.price);
+            formData.append('reduction', data.reduction);
+            formData.append('level', data.level);
            
             
             await axios.put(`/api/chapters/update/${item?.slug}`, formData, {
@@ -234,14 +244,28 @@ export default function UpdateModal({item,isOpen,open,close}:
                             {...register("price")}
                             error={errors?.price?.message}
                         />
+                        <Input
+                            placeholder="Reduction"
+                            label="Reduction(*) en euros"
+                            type="number"
+                            {...register("reduction")}
+                            error={errors?.reduction?.message}
+                        />
+
+                        <Select
+                            label="Niveau"
+                            defaultValue="Débutant"
+                            data={['Débutant', 'Intermédiaire', 'Avancé']}
+                            {...register("level")}
+                            error={errors?.level?.message}
+                        />
                     </div>
                     
-                   
                     <div className="mt-4 space-x-3 text-end rtl:space-x-reverse">
                     <Button
                         onClick={close}
                         variant="outlined"
-                        className="min-w-[7rem] rounded-full"
+                        className="min-w-28 rounded-full"
                         type="button"
                     >
                         Annuler
@@ -249,7 +273,7 @@ export default function UpdateModal({item,isOpen,open,close}:
                     <Button
                         color="primary"
                         ref={saveRef}
-                        className="min-w-[7rem] rounded-full"
+                        className="min-w-28 rounded-full"
                         type="submit"
                     >
                         Enregistrer

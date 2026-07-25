@@ -47,7 +47,7 @@ export default function LearnByLevel() {
               </div>
               <h3 className="text-white font-bold text-sm">{level.name}</h3>
               <Link
-                href={`/cursos?nivel=${level.slug}`}
+                href={`/mes-cours?nivel=${level.slug}`}
                 className="text-[#F0B90B] text-xs font-semibold hover:underline flex items-center gap-1"
               >
                 Voir les cours

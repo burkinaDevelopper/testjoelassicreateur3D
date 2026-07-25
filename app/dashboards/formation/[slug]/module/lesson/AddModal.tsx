@@ -20,7 +20,8 @@ import { useRequired } from "../../../../../hooks/useRequired";
 import { useStoreChapters } from "../../../../../stores/chapters";
 import { useToast } from "../../../../../hooks/useToast";
 import { Plus } from "lucide-react";
-import { VideoFile } from "./VideoFile";
+import { VideoFile } from "../../../../../components/VideoFile";
+
 
 
 

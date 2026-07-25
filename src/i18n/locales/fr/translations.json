@@ -3,7 +3,12 @@
     "dashboards": {
       "dashboards": "Tableaux de bord",
       "home": "Accueil",
+      "bgimage": "Image de fond",
+      "bgvideo": "Vidéo de fond",
+      "galeryjoel": "Galerie Joel",
+      "galeryetudiant": "Galerie Etudiant",
       "formation": "Formation",
+      "shop": "Boutique",
       "apprenant": "Apprenant"
     },
     "settings": {

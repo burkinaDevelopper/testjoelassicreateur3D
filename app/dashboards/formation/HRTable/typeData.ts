@@ -15,5 +15,7 @@ export interface Item {
   description: string;
   price: string;
   duration: any;
+  reduction: any;
+  level: any;
 }
 

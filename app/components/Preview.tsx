@@ -13,6 +13,7 @@ import { Progressbar } from "./Progressbar";
 interface PreviewProps {
   label?: string;
   image?: string;
+  type?: string;
   onChange?: (file: File | null) => void;
   required?: boolean;
   count?: string;
@@ -27,6 +28,7 @@ const Preview = ({
   showProgress = false,
   count = "0",
   image,
+  type
 }: PreviewProps) => {
   const [file, setFile] = useState<File[]>();
   const uploadRef = useRef<HTMLInputElement>(null);
@@ -57,6 +59,7 @@ const Preview = ({
               handleRemove={handleRemove}
               file={file[0]}
               {...props}
+              accept="video/*"
             />
           ) : (
             <Button

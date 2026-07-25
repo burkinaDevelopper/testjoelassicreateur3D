@@ -31,6 +31,7 @@ export default function PasswordUpdate() {
   const {needsConfirmation}= useRole();
   const router = useRouter();
   const { update } = useSession();
+  const isGoogleAccount = currentUser?.provider === 'google';
 
   const {
     register,
@@ -91,6 +92,7 @@ export default function PasswordUpdate() {
             placeholder="Entrez le mot de passe"
             type="password"
             defaultValue={''}
+            disabled={isGoogleAccount}
             prefix={
             <LockClosedIcon
                 className="size-5 transition-colors duration-200"
@@ -105,6 +107,7 @@ export default function PasswordUpdate() {
             label="Confirmer le mot de passe"
             type="password"
             className="rounded-xl"
+            disabled={isGoogleAccount}
             prefix={<LockClosedIcon className="size-5 transition-colors duration-200" strokeWidth="1" />}
             {...register("password_confirmation")}
             error={errors?.password_confirmation?.message}
@@ -113,7 +116,7 @@ export default function PasswordUpdate() {
      
         <div className="mt-8 flex justify-end space-x-3">
             <Button className="min-w-[7rem]">Annuler</Button>
-            <Button type="submit" className="min-w-[7rem]" color="primary">
+            <Button type="submit" className="min-w-[7rem]" color="primary" disabled={isGoogleAccount}>
             Enregistrer
             </Button>
         </div>

@@ -18,7 +18,8 @@ import { useToast } from "../../../../../hooks/useToast";
 import { useRequired } from "../../../../../hooks/useRequired";
 import { SquarePen } from "lucide-react";
 import { useStoreChapters } from "../../../../../stores/chapters";
-import { VideoFile } from "./VideoFile";
+import { VideoFile } from "../../../../../components/VideoFile";
+
 
 
 

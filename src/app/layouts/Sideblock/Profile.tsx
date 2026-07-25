@@ -43,14 +43,14 @@ const links: LinkItem[] = [
     color: "warning",
   },
  
-  {
-    id: "4",
-    title: "Billing",
-    description: "Informations de facturation",
-    to: "/settings/billing",
-    Icon: TbCoins,
-    color: "error",
-  },
+  // {
+  //   id: "4",
+  //   title: "Billing",
+  //   description: "Informations de facturation",
+  //   to: "/settings/billing",
+  //   Icon: TbCoins,
+  //   color: "error",
+  // },
   {
     id: "5",
     title: "Paramètres",

@@ -1,61 +1,22 @@
+"use client";
 import Link from "next/link";
+import { useStoreChapters } from "../../stores/chapters";
+import { useStoreShop } from "../../stores/shop";
+import { useEffect } from "react";
 
 interface Course {
   id: number;
   title: string;
   price: number;
-  originalPrice: number;
-  image: string;
+  reduction: number;
+  url: string;
   instructorAvatar: string;
-  badge?: string;
+  level?: string;
   stars: number;
   reviews: number;
 }
 
-const BEST_SELLERS: Course[] = [
-  {
-    id: 1,
-    title: "Pack Sketchup + Vray 7 2025 Débutant à Intermédiaire",
-    price: 1500,
-    originalPrice: 2000,
-    image: "/images/courses/course-4.jpg",
-    instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "DÉBUTANT À INTERMÉDIAIRE",
-    stars: 5,
-    reviews: 40,
-  },
-  {
-    id: 2,
-    title: "NOUVEAU Pack Sketchup + Vray 7 2025 Intermédiaire à Avancé",
-    price: 1400,
-    originalPrice: 2000,
-    image: "/images/courses/course-5.jpg",
-    instructorAvatar: "/images/avatar/avatar-1.jpg",
-    badge: "AVANCÉ",
-    stars: 5,
-    reviews: 40,
-  },
-  {
-    id: 3,
-    title: "Pack D5Render 2025 Débutant",
-    price: 900,
-    originalPrice: 1500,
-    image: "/images/courses/course-6.jpg",
-    instructorAvatar: "/images/avatar/avatar-1.jpg",
-    stars: 5,
-    reviews: 40,
-  },
-  {
-    id: 4,
-    title: "NOUVEAU Pack Sketchup + Vray 7 2025 Débutant",
-    price: 1100,
-    originalPrice: 2000,
-    image: "/images/courses/course-7.jpg",
-    instructorAvatar: "/images/avatar/avatar-1.jpg",
-    stars: 5,
-    reviews: 40,
-  },
-];
+
 
 function StarRating({ stars, reviews }: { stars: number; reviews: number }) {
   return (
@@ -73,48 +34,67 @@ function StarRating({ stars, reviews }: { stars: number; reviews: number }) {
 }
 
 function BestSellerCard({ course }: { course: Course }) {
+  const toggleCart = useStoreShop((s) => s.toggleCart);
+  const inCart = useStoreShop((s) => s.isInCart(course.id));
+
   return (
     <div className="bg-[#1A1A1A] rounded-lg overflow-hidden border border-[#2A2A2A] hover:border-[#F0B90B]/40 transition-colors group flex flex-col">
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
-          src={course.image}
+          src={course.url}
           alt={course.title}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        {course.badge && (
+        {course.level && (
           <span className="absolute top-2 left-2 bg-[#F0B90B] text-black text-[10px] font-black tracking-wide uppercase px-2 py-0.5 rounded-sm">
-            {course.badge}
+            {course.level}
           </span>
         )}
-        <div className="absolute bottom-2 left-2">
+        {/* <div className="absolute bottom-2 left-2">
           <img
             src={course.instructorAvatar}
             alt="Formateur"
             className="w-8 h-8 rounded-full border-2 border-[#F0B90B] object-cover"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Info */}
       <div className="p-4 flex flex-col flex-1">
-        <StarRating stars={course.stars} reviews={course.reviews} />
+        <StarRating stars={5} reviews={40} />
         <h3 className="text-white text-sm font-semibold leading-tight mt-2 mb-3 flex-1 line-clamp-2">
           {course.title}
         </h3>
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-white font-black text-base">
-            $ {course.price.toLocaleString("es-MX", { minimumFractionDigits: 2 })}
+            € {course.price}
           </span>
           <span className="text-zinc-500 text-sm line-through">
-            $ {course.originalPrice.toLocaleString("es-MX", { minimumFractionDigits: 2 })}
+           € {Number(course.reduction) + Number(course.price)}
           </span>
         </div>
-        <button className="w-full flex items-center justify-center gap-2 bg-black border border-zinc-700 text-white text-xs font-bold tracking-wider uppercase py-2.5 rounded hover:bg-zinc-900 hover:border-[#F0B90B] transition-colors">
+        <button
+          onClick={() =>
+            toggleCart({
+              id: course.id,
+              title: course.title,
+              price: course.price,
+              reduction: Number(course.reduction) + Number(course.price),
+              url: course.url,
+              slug: (course as any).slug,
+            })
+          }
+          className={`w-full flex items-center justify-center gap-2 border text-xs font-bold tracking-wider uppercase py-2.5 rounded transition-colors ${
+            inCart
+              ? "bg-[#F0B90B] border-[#F0B90B] text-black hover:bg-yellow-300"
+              : "bg-black border-zinc-700 text-white hover:bg-zinc-900 hover:border-[#F0B90B]"
+          }`}
+        >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          AJOUTER AU PANIER
+          {inCart ? "DANS LE PANIER" : "AJOUTER AU PANIER"}
         </button>
       </div>
     </div>
@@ -122,6 +102,14 @@ function BestSellerCard({ course }: { course: Course }) {
 }
 
 export default function BestSellers() {
+
+    const getRecentChapters = useStoreChapters((s) => s.getRecentChapters);
+    const recentChapters = useStoreChapters((s) => s.recentChapters);
+          
+    useEffect(() => {
+    void  getRecentChapters();
+    }, [getRecentChapters]);
+    console.log(recentChapters);
   return (
     <section className="bg-white py-12 lg:py-16">
       <div className="max-w-screen-xl mx-auto px-4">
@@ -136,14 +124,16 @@ export default function BestSellers() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {BEST_SELLERS.map((course) => (
+          {recentChapters && recentChapters
+          .filter((chapter) => chapter.price>0)
+          .slice(0,4).map((course) => (
             <BestSellerCard key={course.id} course={course} />
           ))}
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
           <Link
-            href="/cursos"
+            href="/mes-cours"
             className="inline-block bg-[#F0B90B] text-black font-black text-sm tracking-[0.25em] uppercase px-12 py-3.5 hover:bg-yellow-300 transition-colors"
           >
             VOIR TOUT

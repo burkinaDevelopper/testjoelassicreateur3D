@@ -29,6 +29,8 @@ const schema = yup.object({
   image: yup.mixed<File>().required(),
   description: yup.mixed<DeltaStatic>().required('La description est requis'),
   price: yup.string().required('Le prix est requis'),
+  reduction: yup.string().required('Le reduction est requis'),
+  level: yup.string().required('Le niveau est requis'),
   prerequis: yup.string().required('Les prérequis sont requis'),
   targets: yup.string().required('Les public conserner sont requis'),
 });
@@ -81,6 +83,7 @@ export default function Header() {
     const onSubmit = async (data: ValidationSchema) => 
         {
            console.log('exceution script');
+           console.log(data);
           
            
             if (data.image) setShowProgressLogo(true);
@@ -96,6 +99,8 @@ export default function Header() {
             // Champs requis
             formData.append('title', data.title);
             formData.append('price', data.price);
+            formData.append('reduction', data.reduction);
+            formData.append('level', data.level);
             formData.append('prerequis', data.prerequis);
             formData.append('targets', data.targets);
             
@@ -214,7 +219,6 @@ export default function Header() {
                             placeholder="Description de la formation"
                             label="Description(*)"
                              onChange={(value:DeltaStatic) => setValue('description', value)}
-                 
                             />
                             <p>{errors?.description?.message}</p>
                             </div>
@@ -234,6 +238,21 @@ export default function Header() {
                                 type="number"
                                 {...register("price")}
                                 error={errors?.price?.message}
+                            />
+                            <Input
+                                placeholder="Reduction"
+                                label="Reduction(*) en euros"
+                                type="number"
+                                {...register("reduction")}
+                                error={errors?.reduction?.message}
+                            />
+
+                            <Select
+                                label="Niveau"
+                                defaultValue="Débutant"
+                                data={['Débutant', 'Intermédiaire', 'Avancé']}
+                                 {...register("level")}
+                                error={errors?.level?.message}
                             />
 
                             <Textarea

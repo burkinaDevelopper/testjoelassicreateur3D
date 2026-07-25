@@ -1,6 +1,23 @@
+"use client";
 import Link from "next/link";
+import { useStoreMedia } from "../../stores/media";
+import { useEffect, useState, Fragment } from "react";
+import {
+  Dialog,
+  DialogPanel,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function SocialProof() {
+    const getbgVideos = useStoreMedia((s) => s.getbgVideos);
+    const bgVideos = useStoreMedia((s) => s.bgVideos);
+    const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+    useEffect(() => {
+    void  getbgVideos();
+    }, [getbgVideos]);
   return (
     <section className="bg-[#0E0E0E] border-t border-zinc-800">
       <div className="max-w-screen-xl mx-auto">
@@ -32,7 +49,7 @@ export default function SocialProof() {
             </div>
 
             <Link
-              href="/cursos"
+              href="/mes-cours"
               className="inline-block self-start bg-[#F0B90B] text-black font-black text-sm tracking-[0.25em] uppercase px-10 py-3.5 hover:bg-yellow-300 transition-colors"
             >
               REJOINDRE UN COURS
@@ -67,7 +84,12 @@ export default function SocialProof() {
               </div>
             </div>
             {/* Play button overlay */}
-            <button className="absolute inset-0 flex items-center justify-center group" aria-label="Voir la vidéo">
+            <button
+              onClick={() => setIsVideoOpen(true)}
+              disabled={!bgVideos?.[0]?.url}
+              className="absolute inset-0 flex items-center justify-center group disabled:cursor-not-allowed"
+              aria-label="Voir la vidéo"
+            >
               <div className="w-16 h-16 rounded-full bg-black/60 border-2 border-white flex items-center justify-center group-hover:bg-[#F0B90B] group-hover:border-[#F0B90B] transition-colors">
                 <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -77,6 +99,54 @@ export default function SocialProof() {
           </div>
         </div>
       </div>
+
+      <Transition appear show={isVideoOpen} as={Fragment}>
+        <Dialog
+          as="div"
+          className="fixed inset-0 z-100 flex items-center justify-center overflow-hidden px-4 py-6 sm:px-5"
+          onClose={() => setIsVideoOpen(false)}
+        >
+          <TransitionChild
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="absolute inset-0 bg-black/80" />
+          </TransitionChild>
+
+          <TransitionChild
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <DialogPanel className="relative w-full max-w-3xl aspect-video bg-black rounded-lg overflow-hidden">
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                aria-label="Fermer la vidéo"
+                className="absolute top-2 right-2 z-10 text-white/80 hover:text-white bg-black/50 rounded-full p-1.5 transition-colors"
+              >
+                <XMarkIcon className="size-5" />
+              </button>
+              {bgVideos?.[0]?.url && (
+                <video
+                  src={bgVideos[0].url}
+                  controls
+                  autoPlay
+                  className="w-full h-full"
+                />
+              )}
+            </DialogPanel>
+          </TransitionChild>
+        </Dialog>
+      </Transition>
     </section>
   );
 }

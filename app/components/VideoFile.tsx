@@ -5,7 +5,8 @@ import { CloudArrowUpIcon } from "@heroicons/react/24/solid";
 
 // Local Imports
 import { Upload, Button } from "@/components/ui";
-import { Progressbar } from "../../../../../components/Progressbar";
+import { Progressbar } from "./Progressbar";
+
 
 // ----------------------------------------------------------------------
 

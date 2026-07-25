@@ -37,6 +37,26 @@ export function SubRowComponent({
           </div>
         </div>
         <div>
+          <p className="font-medium">Reduction:</p>
+          <div className="mt-0 flex max-w-xs flex-wrap gap-2">
+             <Badge  
+                className="capitalize"
+                variant="soft"
+              >
+                {row.original?.reduction}
+              </Badge>
+          </div>
+          <p className="font-medium mt-3">Niveau:</p>
+          <div className="mt-0 flex max-w-xs flex-wrap gap-2">
+             <Badge  
+                className="capitalize"
+                variant="soft"
+              >
+                {row.original?.level}
+              </Badge>
+          </div>
+        </div>
+        <div>
           <p className="font-medium">description:</p>
           <div className="mt-3 space-y-2">
            <img src={row.original?.url} alt="logo" className="w-60 h-30 rounded-full" />

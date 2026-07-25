@@ -46,7 +46,7 @@ export function Sidebar({learner}: any) {
               if (lgAndDown) close();
             }}
             className="w-32 h-9">
-              <img src={learner?.organisme?.logo } alt="Logo" className="inline-block mr-2 w-auto h-full"/>
+              <img src="/images/logo.png" alt="logo" className="h-full w-auto" />
           </div>
 
           <div className="xl:hidden">

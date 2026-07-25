@@ -1,10 +1,11 @@
 // Import Dependencies
 import { Link } from "@/router";
 import clsx from "clsx";
+import Image from "next/image";
 import { SetStateAction, Dispatch } from "react";
 
 // Local Imports
-import Logo from "@/components/icons/assets/AppLogo";
+import LogoImage from "@/assets/logo.png";
 import { Menu } from "./Menu";
 import { Item } from "./Menu/item";
 import { Profile } from "../../Profile";
@@ -40,7 +41,7 @@ export function MainPanel({
         {/* Application Logo */}
         <div className="flex pt-3.5">
           <Link to="/">
-            <Logo className="text-primary-600 dark:text-primary-400 size-10" />
+            <Image src={LogoImage} alt="Logo" className="h-10 w-auto" priority />
           </Link>
         </div>
 

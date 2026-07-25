@@ -20,7 +20,6 @@ export async function POST(request: NextRequest) {
     // Récupérer le FormData depuis la requête
     const requestFormData = await request.formData();
 
-    console.log("requestFormData", requestFormData);
 
     // URL de l'API backend Nest.js (variable serveur)
     const backendUrl = process.env.API_BACKEND_URL;

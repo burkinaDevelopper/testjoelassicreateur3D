@@ -63,7 +63,7 @@ export default function LearnByTool() {
               </div>
               <h3 className="text-white font-bold text-sm">{tool.name}</h3>
               <Link
-                href={`/cursos?herramienta=${tool.slug}`}
+                href={`/mes-cours?herramienta=${tool.slug}`}
                 className="text-[#F0B90B] text-xs font-semibold hover:underline flex items-center gap-1"
               >
                 Voir les cours

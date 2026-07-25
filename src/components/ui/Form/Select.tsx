@@ -4,7 +4,7 @@ import {
   useEffect,
   useMemo,
   useRef,
-  RefObject,
+  Ref,
   HTMLAttributes,
   ComponentPropsWithoutRef,
 } from "react";
@@ -46,7 +46,7 @@ type SelectProps = {
   rootProps?: HTMLAttributes<HTMLDivElement>;
   labelProps?: HTMLAttributes<HTMLLabelElement>;
   data?: (SelectOption | string | number)[];
-  ref?: RefObject<HTMLSelectElement>;
+  ref?: Ref<HTMLSelectElement>;
   multiple?: boolean;
 } & Omit<ComponentPropsWithoutRef<"select">, "prefix">;
 
