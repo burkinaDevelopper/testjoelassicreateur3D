@@ -97,6 +97,12 @@ export default function SignUpV1() {
   return (
     <main className="min-h-100vh grid w-full grow grid-cols-1 place-items-center">
       <div className="w-full max-w-104 p-4 sm:px-5">
+        <Link
+          href="/"
+          className="mb-2 inline-block text-xs text-gray-400 transition-colors hover:text-gray-800 focus:text-gray-800 dark:text-dark-300 dark:hover:text-dark-100 dark:focus:text-dark-100"
+        >
+          ← Retour à l'accueil
+        </Link>
         <div className="text-center">
           <Image
             src="/images/logo.png"

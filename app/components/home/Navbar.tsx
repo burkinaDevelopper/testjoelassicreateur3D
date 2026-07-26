@@ -63,9 +63,17 @@ export default function Navbar() {
       <nav className="max-w-screen-xl mx-auto px-4 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          
+          <div className="flex items-center gap-0.5">
+            {[0, 1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="w-2.5 h-2.5 bg-[#F0B90B]"
+                style={{ opacity: 1 - i * 0.15 }}
+              />
+            ))}
+          </div>
           <div className="leading-none">
-            <span className="text-zinc-400 text-[8px] font-light tracking-[0.3em] uppercase block">
+            <span className="text-zinc-400 text-[11px] font-light tracking-[0.3em] uppercase block ">
               { appName }
             </span>
           </div>
