@@ -3,7 +3,7 @@ import Link from "next/link";
 const TOOLS = [
   {
     id: 1,
-    name: "Sketchup + Vray",
+    name: "SKETCHUP + VRAY",
     slug: "sketchup-vray",
     icon: (
       <div className="flex items-center gap-1">
@@ -23,7 +23,7 @@ const TOOLS = [
   },
   {
     id: 2,
-    name: "D5 Render",
+    name: "D5 RENDER",
     slug: "ds-render",
     icon: (
       <div className="w-10 h-10 rounded-xl bg-[#7C3AED] flex items-center justify-center">
@@ -33,7 +33,7 @@ const TOOLS = [
   },
   {
     id: 3,
-    name: "Revit",
+    name: "REVIT",
     slug: "revit",
     icon: (
       <div className="w-10 h-10 rounded-lg bg-[#3B82F6] flex items-center justify-center">
@@ -61,7 +61,7 @@ export default function LearnByTool() {
               <div className="group-hover:scale-110 transition-transform duration-300">
                 {tool.icon}
               </div>
-              <h3 className="text-white font-bold text-sm">{tool.name}</h3>
+              <h3 className="text-white font-bold text-sm uppercase!">{tool.name}</h3>
               <Link
                 href={`/mes-cours?herramienta=${tool.slug}`}
                 className="text-[#F0B90B] text-xs font-semibold hover:underline flex items-center gap-1"
