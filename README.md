@@ -280,3 +280,8 @@ https://heroicons.com/solid
 
 
  
+
+ je souhaite que tu ecrive un proxy qui bloque acces a la page 
+ mon espace si 
+email_verified_at== null
+je precide que si is_admin: 0 et email_verified_at!==null il es rediger vers  mon espace et tout les sous pages

@@ -52,9 +52,17 @@ export default function SignUpV1() {
 
   const onSubmit = async (data: FormValues) => {
       setErrorMessage(null);
-      setValue('provider', 'credentials');
+    
+      const form={
+        lastname: data.lastname,
+        firstname: data.firstname,
+        email: data.email,
+        password: data.password,
+        password_confirmation: data.password_confirmation,
+        provider: 'credentials'
+      }
 
-      await axios.post(`/api/auth/register`,data,
+      await axios.post(`/api/auth/register`,form,
           {
             headers: {
               "Accept": "application/json",
@@ -68,7 +76,7 @@ export default function SignUpV1() {
             const result = await signIn("credentials", {
               redirect: false,
               email: data.email,
-              password: data.password,
+              password: form.password,
             });
              router.replace("/verify-email");
             console.log(result);
@@ -132,6 +140,7 @@ export default function SignUpV1() {
                  {...register("firstname")}
                   error={errors?.firstname?.message}
               />
+             
               <Input
                 placeholder="Email"
                 prefix={
@@ -167,6 +176,7 @@ export default function SignUpV1() {
                  {...register("password_confirmation")}
                   error={errors?.password_confirmation?.message}
               />
+             
 
               <div className="flex gap-1">
                 <Checkbox label="Je suis d'accord avec" />

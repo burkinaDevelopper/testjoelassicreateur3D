@@ -160,7 +160,7 @@ export function Profile() {
                   <Button
                     className="w-full gap-2"
                     onClick={async () => {
-                      await signOut({ redirect: false });
+                      await signOut({ redirect: true });
                       router.replace("/login");
                     }}
                   >

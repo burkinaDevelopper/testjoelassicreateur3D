@@ -88,7 +88,8 @@ function VerifyEmail() {
           console.log(response);
           if (response.status==200) {
             showSuccess(response.data.message);
-            router.replace("/dashboards/home");   
+            await signOut({ redirect: false });
+            router.replace("/login");;   
           }
         })
         .catch(function (error) {
@@ -132,6 +133,16 @@ function VerifyEmail() {
             <p className="dark:text-dark-300 text-gray-400 mt-2 border border-gray-200 dark:border-dark-500 rounded-md p-3 text-sm text-green-500">
               conseil : vérifiez votre boîte de réception (et les spams) pour trouver l'email de vérification. Si vous ne l'avez pas reçu, essayez de vous reconnecter pour renvoyer l'email.
             </p>
+            {/* <Button
+              className="mt-5 w-full"
+              color="primary"
+              onClick={async () => {
+                await signOut({ redirect: false });
+                router.replace("/login");
+              }}
+            >
+              Se reconnecter
+            </Button> */}
           </div>
         </div>
         {hash && id && (
